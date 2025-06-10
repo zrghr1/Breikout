@@ -16,28 +16,51 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
   }
 
   if(SDL_Init(SDL_INIT_EVERYTHING) == 0){
-    std::cout << "Subsystem Initialized!..." std::endl;
+    std::cout << "Subsystem Initialized..." << std::endl;
 
     window = SDL_CreateWindow(title, xpos, ypos, height, flags);
     if(window){
-      std::cout << "Window created" << std::endl;
+      std::cout << "Window Created..." << std::endl;
     }
+
+    renderer = SDL_CreateRenderer(window, -1, 0);
+    if(renderer){
+      SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+      std::cout << "Renderer Created..." << std::endl;
+    }
+
+    isRunning = true;
+  } else {
+    isRunning = false;
   }
 }
 
 void handleEvents(){
-
+  SDL_Event event;
+  SDL_PollEvent(&event)
+  switch(event.type) {
+    case SDL_EVENT_QUIT: 
+      isRunning = false;
+      break;
+    default:
+      break;
+  }
 }
 
 void update(){
-
 }
 
 void render(){
-
+  SDL_RenderClear(renderer);
+  // Add renderables here
+  SDL_RenderPresent(renderer);
 }
 
 void clear(){
+  SDL_DestroyWindow(window);
+  SDL_DestroyRenderer(renderer);
+  SDL_Quit();
 
+  std::cout << "Game Cleared" << std::endl;
 }
 
