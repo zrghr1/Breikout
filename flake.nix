@@ -61,6 +61,7 @@
             # libs
             glm
             sdl3
+            sdl3-image
           ];
           name = "C";
           LD_LIBRARY_PATH = p.lib.makeLibraryPath packages;
