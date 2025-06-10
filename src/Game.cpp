@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "TextureManager.hpp"
 
 SDL_Texture* brick;
 
@@ -37,7 +38,7 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   }
 
   // Test brick
-  brick = IMG_LoadTexture(renderer, "assets/2d/Brick.png");
+  brick = TextureManager::LoadTexture("assets/2d/Brick.png", renderer);
 
   if(brick == NULL) {
     std::cout << "ERROR: " << SDL_GetError() << std::endl;
