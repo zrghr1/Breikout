@@ -1,4 +1,4 @@
-SRCS = ./src/main.cpp ./src/Game.cpp
+SRCS = ./src/main.cpp ./src/Game.cpp ./src/utils/TextureManager.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
