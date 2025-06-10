@@ -1,7 +1,7 @@
-#ifndef Game_hpp
-#define Game_hpp
+#pragma once
 
 #include "SDL3/SDL.h"
+#include "SDL3_image/SDL_image.h"
 #include <iostream>
 
 class Game {
@@ -25,4 +25,3 @@ private:
   SDL_Renderer* renderer;
 };
 
-#endif /* game_hpp */

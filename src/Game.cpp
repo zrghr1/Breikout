@@ -1,5 +1,7 @@
 #include "Game.hpp"
 
+SDL_Texture* brick;
+
 Game::Game() {
 
 }
@@ -33,6 +35,9 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   } else {
     isRunning = false;
   }
+
+  // Test brick
+  SDL_Surface* tmpSurface = IMG_Load("assets/brick.png")
 }
 
 void Game::handleEvents(){
