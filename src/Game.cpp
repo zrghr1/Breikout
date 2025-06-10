@@ -48,6 +48,7 @@ void handleEvents(){
 }
 
 void update(){
+  cnt++;
 }
 
 void render(){
