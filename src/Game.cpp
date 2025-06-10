@@ -37,9 +37,12 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   }
 
   // Test brick
-  SDL_Surface* tmpSurface = IMG_Load("assets/brick.png");
-  brick = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-  SDL_DestroySurface(tmpSurface);
+  brick = IMG_LoadTexture(renderer, "assets/2d/Brick.png");
+
+  if(brick == NULL) {
+    std::cout << "ERROR: " << SDL_GetError() << std::endl;
+    isRunning = false;
+  }
 }
 
 void Game::handleEvents(){
