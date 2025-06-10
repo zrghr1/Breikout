@@ -37,7 +37,9 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   }
 
   // Test brick
-  SDL_Surface* tmpSurface = IMG_Load("assets/brick.png")
+  SDL_Surface* tmpSurface = IMG_Load("assets/brick.png");
+  brick = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+  SDL_FreeSurface(tmpSurface)
 }
 
 void Game::handleEvents(){
