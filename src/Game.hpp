@@ -23,6 +23,6 @@ private:
   bool isRunning;
   SDL_Window* window;
   SDL_Renderer* renderer;
-}
+};
 
 #endif /* game_hpp */
