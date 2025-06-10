@@ -1,5 +1,5 @@
 #include "Game.hpp"
-#include "TextureManager.hpp"
+#include "utils/TextureManager.hpp"
 
 SDL_Texture* brick;
 

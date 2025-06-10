@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Game.hpp"
+#include "../Game.hpp"
 
-class TextureManager(){
+class TextureManager{
 public:
   static SDL_Texture* LoadTexture(const char* fileName, SDL_Renderer* ren);
 };
