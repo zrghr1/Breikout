@@ -39,7 +39,7 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   // Test brick
   SDL_Surface* tmpSurface = IMG_Load("assets/brick.png");
   brick = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-  SDL_FreeSurface(tmpSurface);
+  SDL_DestroySurface(tmpSurface);
 }
 
 void Game::handleEvents(){
@@ -61,7 +61,7 @@ void Game::update(){
 void Game::render(){
   SDL_RenderClear(renderer);
   // Add renderables here
-  SDL_RenderCopy(renderer, brick, NULL, NULL);
+  SDL_RenderTexture(renderer, brick, NULL, NULL);
   // End here
   SDL_RenderPresent(renderer);
 }

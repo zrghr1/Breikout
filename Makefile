@@ -8,7 +8,7 @@ CXXFLAGS = -Wall
 
 CC = clang++
 
-LIBS = -lSDL3
+LIBS = -lSDL3 -lSDL3_image
 
 all: $(TARGET)
 
