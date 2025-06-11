@@ -8,7 +8,7 @@ public:
   ~Paddle();
 
   void handleInput(SDL_Event event);
-  void move(int x);
+  void move();
 
 private:
   int xvel;

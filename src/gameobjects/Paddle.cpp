@@ -9,14 +9,22 @@ Paddle::Paddle(const char* texture, SDL_Renderer* ren, int x, int y, int w, int 
 void Paddle::handleInput(SDL_Event e){
   if(e.type == SDL_EVENT_KEY_DOWN){
     if(e.key.key == SDLK_LEFT){
-      std::cout << "left" << std::endl;
+      xvel = -1;
+    }
+    if(e.key.key == SDLK_RIGHT){
+      xvel = -1;
+    }
+  }
+  if(e.type == SDL_EVENT_KEY_DOWN){
+    if(e.key.key == SDLK_LEFT || e.key.key == SDLK_RIGHT){
+      xvel = 0;
     }
   }
 }
 
-void Paddle::move(int x){
+void Paddle::move(){
   if(xpos >= 0 && xpos <= 800){
-    xpos += x;
+    xpos += xvel;
     collider.x = xpos;
   }
 }
