@@ -63,6 +63,8 @@ void Game::update(){
   cnt++;
   
   brick->update();
+  ball->update();
+  ball->move();
   //std::cout << cnt << std::endl;
 }
 
@@ -71,6 +73,7 @@ void Game::render(){
   // Add renderables here
 
   brick->render();
+  ball->render();
   // End here
   SDL_RenderPresent(renderer);
 }
@@ -79,6 +82,9 @@ void Game::clear(){
   SDL_DestroyWindow(window);
   SDL_DestroyRenderer(renderer);
   SDL_Quit();
+
+  free(brick);
+  free(ball);
 
   std::cout << "Game Cleared" << std::endl;
 }

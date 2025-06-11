@@ -1,21 +1,21 @@
 #include "Ball.hpp"
 #include "../utils/Collision.hpp"
 
-Ball::Ball(const char* texture, SDL_Renderer* ren, int x, int y, int width, int height)
-: GameObject(texture,ren,x,y, width, height){
+Ball::Ball(const char* texture, SDL_Renderer* ren, int x, int y, int w, int h)
+: GameObject(texture,ren,x,y, w, h){
   
-  collider.w = width;
-  collider.h = height;
+  collider.w = width*2;
+  collider.h = height*2;
   
   xvel = 1;
   yvel = 1;
 }
 
-void Ball::move( SDL_FRect& wall){
+void Ball::move(/* SDL_FRect& wall */){
   xpos += xvel;
   collider.x = xpos;
 
-  if ((xpos < 0 ) || (xpos + collider.w > 800) || checkCollision(collider, wall)){
+  if ((xpos < 0 ) || (xpos + collider.w > 800) /* || checkCollision(collider, wall) */){
     xpos -= xvel;
     collider.x = xpos;
   }
@@ -23,7 +23,7 @@ void Ball::move( SDL_FRect& wall){
   ypos += yvel;
   collider.y = ypos;
 
-  if ((ypos < 0 ) || (ypos + collider.h > 800) || checkCollision(collider, wall)){
+  if ((ypos < 0 ) || (ypos + collider.h > 800) /* || checkCollision(collider, wall) */){
     ypos -= yvel;
     collider.y = ypos;
   }
