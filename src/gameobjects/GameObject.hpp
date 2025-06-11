@@ -9,10 +9,10 @@ public:
 
   void update();
   void render();
-
-protected:
   int xpos;
   int ypos;
+
+protected:
   int width;
   int height;
 

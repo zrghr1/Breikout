@@ -11,7 +11,7 @@ Ball::Ball(const char* texture, SDL_Renderer* ren, int x, int y, int w, int h)
   yvel = 3;
 }
 
-void Ball::move(SDL_FRect paddle){
+void Ball::move(Paddle* paddle){
   xpos += xvel;
   collider.x = xpos;
 
@@ -30,7 +30,5 @@ void Ball::move(SDL_FRect paddle){
     collider.y = ypos;
   }
 
-  if(xpos < paddle.x && xpos > paddle.x + paddle.w && ypos < paddle.y && ypos > paddle.h){
-    std::cout << "hit" << std::endl;
-  }
+  std::cout << paddle->xpos << std::endl;
 }

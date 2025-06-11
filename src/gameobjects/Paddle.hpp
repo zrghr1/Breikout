@@ -9,8 +9,8 @@ public:
 
   void handleInput(SDL_Event event);
   void move();
+  SDL_FRect collider;
 
 private:
   int xvel;
-  SDL_FRect collider;
 };

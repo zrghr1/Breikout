@@ -72,7 +72,7 @@ void Game::update(){
   
   brick->update();
   ball->update();
-  ball->move();
+  ball->move(paddle);
   paddle->update();
   paddle->move();
   //std::cout << cnt << std::endl;
