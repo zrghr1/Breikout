@@ -54,7 +54,7 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   // Initialize Bricks
   for(int row = 0; row < 4; row++){
     for(int col = 0; col < 10; col++){
-      Brick* brick = new Brick("assets/2d/Brick.png", renderer, col*40, row*20, 40, 20);
+      Brick* brick = new Brick("assets/2d/Brick.png", renderer, col*80, row*40, 40, 20);
       bricks.push_back(brick);
     }
   }
