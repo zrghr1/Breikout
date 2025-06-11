@@ -5,6 +5,8 @@
 #include "gameobjects/Brick.hpp"
 #include "gameobjects/Paddle.hpp"
 
+GameObject* startScreen;
+
 std::vector<Brick*> bricks;
 const int rows = 8;
 const int cols = 10;
@@ -55,6 +57,9 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
     isRunning = false;
   }*/
 
+  // Init startScreen
+  startScreen = new GameObject("assets/2d/StartScreen.png", 200, 200, 400, 400)
+
   // Initialize Bricks
   for(int row = 0; row < rows; row++){
     for(int col = 0; col < cols; col++){
@@ -101,7 +106,9 @@ void Game::handleEvents(){
 }
 
 void Game::update(){
-  if(state == 1){
+  if(state == 0) {
+    startScreen->update();
+  } else if (state == 1){
     cnt++;
    
     ball->update();
@@ -125,12 +132,16 @@ void Game::update(){
 void Game::render(){
   SDL_RenderClear(renderer);
   // Add renderables here
+  if (state == 0){
+    startScreen->render();
+  } else if (state == 1){
 
-  for(int i = 0; i < rows*cols; i++){
-    bricks[i]->render();
+    for(int i = 0; i < rows*cols; i++){
+      bricks[i]->render();
+    }
+    ball->render();
+    paddle->render();
   }
-  ball->render();
-  paddle->render();
   // End here
   SDL_RenderPresent(renderer);
 }
@@ -145,6 +156,7 @@ void Game::clear(){
   }
   free(ball);
   free(paddle);
+  free(startScreen);
 
   std::cout << "Game Cleared" << std::endl;
 }
