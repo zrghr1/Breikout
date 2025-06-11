@@ -10,9 +10,6 @@ GameObject::GameObject(const char* texture, SDL_Renderer* ren, int x, int y){
 }
 
 void GameObject::update(){
-  xpos++;
-  ypos++;
-
   srcRect.h = 20;
   srcRect.w = 40;
   srcRect.x = 0;
