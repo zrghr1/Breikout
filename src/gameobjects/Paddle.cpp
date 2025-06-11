@@ -13,7 +13,7 @@ void Paddle::move(int x){
   }
 }
 
-void Paddle::handleInput(SDL_Event event){
+void Paddle::handleInput(SDL_Event e){
   if(e.type == SDL_EVENT_KEY_DOWN){
     if(e.key.key == SDLK_LEFT){
       std::cout << "left" << std::endl;
