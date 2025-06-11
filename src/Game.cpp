@@ -39,7 +39,7 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   }
 
   // Test brick
-  brick = new GameObject("assets/2d/Brick.png", renderer);
+  brick = new GameObject("assets/2d/Brick.png", renderer, 0, 0);
 }
 
 void Game::handleEvents(){
