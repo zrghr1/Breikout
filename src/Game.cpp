@@ -5,7 +5,7 @@
 #include "gameobjects/Brick.hpp"
 #include "gameobjects/Paddle.hpp"
 
-Brick* brick;
+std::vector<Brick*> bricks;
 Ball* ball;
 Paddle* paddle;
 
@@ -51,8 +51,13 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
     isRunning = false;
   }*/
 
-  // Initialize Brick
-  brick = new Brick("assets/2d/Brick.png", renderer, 0, 0, 40, 20);
+  // Initialize Bricks
+  for(int row = 0; row < 4; row++){
+    for(int col = 0; col < 10; col++){
+      Brick* brick = new Brick("assets/2d/Brick.png", renderer, col*40, row*20, 40, 20);
+      bricks.push_back(brick);
+    }
+  }
 
   // Initialize ball
   ball = new Ball("assets/2d/Ball.png", renderer, 400, 400, 10, 10);
@@ -81,15 +86,19 @@ void Game::handleEvents(){
 
 void Game::update(){
   cnt++;
-  
-  brick->update();
+ 
   ball->update();
   ball->move(paddle);
-  int brickHit = ball->collideBrick(brick);
-  if(brickHit == 1){
-    score++;
-    std::cout << score << std::endl;
+  for(int i = 0; i < 40; i++){
+    bricks[i]->update();
+
+    int brickHit = ball->collideBrick(bricks[i]);
+    if(brickHit == 1){
+      score++;
+      std::cout << score << std::endl;
+    }
   }
+  
   paddle->update();
   paddle->move();
   //std::cout << cnt << std::endl;
@@ -99,7 +108,9 @@ void Game::render(){
   SDL_RenderClear(renderer);
   // Add renderables here
 
-  brick->render();
+  for(int i = 0; i < 40; i++){
+    bricks[i]->render();
+  }
   ball->render();
   paddle->render();
   // End here
@@ -111,7 +122,9 @@ void Game::clear(){
   SDL_DestroyRenderer(renderer);
   SDL_Quit();
 
-  free(brick);
+  for(int i = 0; i < 40; i++){
+    free(bricks[i]);
+  }
   free(ball);
   free(paddle);
 
