@@ -1,8 +1,10 @@
 #include "Game.hpp"
 #include "utils/TextureManager.hpp"
 #include "gameobjects/GameObject.hpp"
+#include "gameobjects/Ball.hpp"
 
 GameObject* bricks[40];
+Ball* ball;
 
 Game::Game() {
 
@@ -48,7 +50,9 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
     bricks[i] = new GameObject("assets/2d/Brick.png", renderer, (i%40) * 80, count*40);
   }
 
-  // Test brick
+  // Initialize ball
+  ball = new Ball("assets/2d/Ball.png", renderer, 400, 400)
+
 }
 
 void Game::handleEvents(){
