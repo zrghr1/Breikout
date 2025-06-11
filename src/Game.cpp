@@ -2,9 +2,11 @@
 #include "utils/TextureManager.hpp"
 #include "gameobjects/GameObject.hpp"
 #include "gameobjects/Ball.hpp"
+#include "gameobjects/Paddle.hpp"
 
 GameObject* brick;
 Ball* ball;
+Paddle* paddle;
 
 Game::Game() {
 
@@ -45,6 +47,10 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
 
   // Initialize ball
   ball = new Ball("assets/2d/Ball.png", renderer, 400, 400, 10, 10);
+
+  // Initialize Paddle
+  paddle = new Paddle("assets/2d/Paddle.png", renderer, 400, 700, 60, 10);
+
 }
 
 void Game::handleEvents(){
@@ -85,6 +91,7 @@ void Game::clear(){
 
   free(brick);
   free(ball);
+  free(paddle);
 
   std::cout << "Game Cleared" << std::endl;
 }
