@@ -15,7 +15,7 @@ void Paddle::handleInput(SDL_Event e){
 }
 
 void Paddle::move(int x){
-  if(xpos >= 0 || xpos <= 800){
+  if(xpos >= 0 && xpos <= 800){
     xpos += x;
     collider.x = xpos;
   }

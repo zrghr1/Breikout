@@ -8,8 +8,6 @@ public:
   ~Paddle();
 
   void handleInput(SDL_Event event);
-  void update();
-  void render();
   void move(int x);
 
 private:
