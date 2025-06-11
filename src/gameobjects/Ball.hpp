@@ -4,10 +4,10 @@
 
 class Ball : public GameObject {
 public:
-  Ball();
+  Ball(const char* texture, SDL_Renderer* ren, int x, int y);
   ~Ball();
 
-  void move( SDL_FRect& wall);
+  void move(SDL_FRect& wall);
   
 private:
   int xvel, yvel;
