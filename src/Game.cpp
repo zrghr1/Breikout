@@ -41,6 +41,12 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   } else {
     isRunning = false;
   }
+  
+  // Initialize SDL3-ttf
+  if(TTF_Init() != 0){
+    std::cout << "SDL3_ttf failed initialization" << std::endl;
+    isRunning = false;
+  }
 
   // Initialize Brick
   brick = new GameObject("assets/2d/Brick.png", renderer, 0, 0, 40, 20);
