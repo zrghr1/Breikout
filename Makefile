@@ -1,4 +1,4 @@
-SRCS = ./src/main.cpp ./src/Game.cpp ./src/utils/TextureManager.cpp ./src/gameobjects/GameObject.cpp ./src/gameobjects/Ball.cpp ./src/utils/Collision.cpp ./src/gameobjects/Paddle.cpp ./src/gameobjects/Brick.cpp
+SRCS = ./src/main.cpp ./src/Game.cpp ./src/utils/TextureManager.cpp ./src/gameobjects/GameObject.cpp ./src/gameobjects/Ball.cpp ./src/gameobjects/Paddle.cpp ./src/gameobjects/Brick.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
