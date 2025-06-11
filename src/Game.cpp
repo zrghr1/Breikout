@@ -3,7 +3,7 @@
 #include "gameobjects/GameObject.hpp"
 #include "gameobjects/Ball.hpp"
 
-GameObject* bricks[40];
+GameObject* brick;
 Ball* ball;
 
 Game::Game() {
@@ -40,19 +40,11 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
     isRunning = false;
   }
 
-  // Initialize bricks
-  int count = 0;
-  for(int i = 0; i < sizeof(bricks); i++){
-    if(i%40 == 39){
-      count++;
-    }
-    std::cout << count << std::endl;
-    bricks[i] = new GameObject("assets/2d/Brick.png", renderer, (i%40) * 80, count*40, 80, 40);
-  }
+  // Initialize Brick
+  brick = new Brick("assets/2d/Brick.png", renderer, 0, 0, 40, 20);
 
   // Initialize ball
-  ball = new Ball("assets/2d/Ball.png", renderer, 400, 400, 20, 20);
-
+  ball = new Ball("assets/2d/Ball.png", renderer, 400, 400, 10, 10);
 }
 
 void Game::handleEvents(){

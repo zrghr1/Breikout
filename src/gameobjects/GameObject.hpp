@@ -9,10 +9,10 @@ public:
 
   void update();
   void render();
-
-protected:
   int xpos;
   int ypos;
+
+protected:
 
   SDL_Texture* objTexture;
   SDL_FRect srcRect, destRect;
