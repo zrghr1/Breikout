@@ -51,7 +51,7 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   }
 
   // Initialize ball
-  ball = new Ball("assets/2d/Ball.png", renderer, 400, 400)
+  ball = new Ball("assets/2d/Ball.png", renderer, 400, 400);
 
 }
 
