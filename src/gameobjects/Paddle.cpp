@@ -9,11 +9,11 @@ Paddle::Paddle(const char* texture, SDL_Renderer* ren, int x, int y, int w, int 
 void Paddle::handleInput(SDL_Event e){
   if(e.type == SDL_EVENT_KEY_DOWN){
     if(e.key.key == SDLK_LEFT){
-      xvel = -1;
+      xvel = -3;
       std::cout << xvel << std::endl;
     }
     if(e.key.key == SDLK_RIGHT){
-      xvel = 1;
+      xvel = 3;
       std::cout << xvel << std::endl;
     }
   }
