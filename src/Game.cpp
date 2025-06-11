@@ -14,6 +14,8 @@ Game::~Game(){
 
 }
 
+bool KEYS[322];
+
 void Game::init(const char *title, int width, int height, bool fullscreen){
 
   int flags = 0;
@@ -38,6 +40,11 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
     isRunning = true;
   } else {
     isRunning = false;
+  }
+
+  // Initialize KEYS
+  for(int i = 0; i < 322; i++){
+    KEYS[i] = false;
   }
 
   // Initialize Brick
