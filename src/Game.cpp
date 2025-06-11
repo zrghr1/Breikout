@@ -61,8 +61,21 @@ void Game::handleEvents(){
     case SDL_EVENT_QUIT: 
       isRunning = false;
       break;
+    case SDL_KEYDOWN:
+      KEYS[event.key.keysym.sym] = true;
+      break;
+    case SDL_KEYUP:
+      KEYS[event.key.keysym.sym] = false;
+      break;
     default:
       break;
+  }
+  handleInput()
+}
+
+void Game::handleInput(){
+  if(KEYS[SDLK_LEFT]){
+    std::cout << "AAA" << std::endl;
   }
 }
 

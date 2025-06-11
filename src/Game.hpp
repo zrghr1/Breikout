@@ -12,6 +12,7 @@ public:
   void init(const char* title, int width, int height, bool fullscreen);
 
   void handleEvents();
+  void handleInput();
   void update();
   void render();
   void clear();
