@@ -3,7 +3,7 @@
 
 GameObject::GameObject(const char* texture, SDL_Renderer* ren){
   renderer = ren;
-  objTexture = TextureManager::LoadTexture(texture, ren)
+  objTexture = TextureManager::LoadTexture(texture, ren);
 }
 
 void GameObject::update(){
