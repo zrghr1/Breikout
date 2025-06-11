@@ -2,7 +2,7 @@
 #include "utils/TextureManager.hpp"
 #include "gameobjects/GameObject.hpp"
 
-GameObject* bricks[10][4];
+GameObject* bricks[40];
 
 Game::Game() {
 
@@ -38,10 +38,13 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
     isRunning = false;
   }
 
-  for(int x = 0; x < sizeof(bricks); x++){
-    for(int y = 0; y < sizeof(bricks[x]); y++){
-      bricks[x][y] = new GameObject("assets/2d/Brick.png", renderer, x * 80, y * 40);
+  int count = 0;
+  for(int i = 0; i < sizeof(bricks); i++){
+    if(i%40 == 39){
+      count++;
     }
+    std::cout << count << std::endl;
+    bricks[i] = new GameObject("assets/2d/Brick.png", renderer, (i%40) * 80, count*40);
   }
 
   // Test brick
@@ -61,10 +64,8 @@ void Game::handleEvents(){
 
 void Game::update(){
   cnt++;
-  for(int x = 0; x < sizeof(bricks); x++){
-    for(int y = 0; y < sizeof(bricks[x]); y++){
-      bricks[x][y]->update();
-    }
+  for(int i = 0; i < sizeof(bricks); i++){
+    bricks[i]->update();
   }
   //std::cout << cnt << std::endl;
 }
@@ -73,10 +74,8 @@ void Game::render(){
   SDL_RenderClear(renderer);
   // Add renderables here
 
-  for(int x = 0; x < sizeof(bricks); x++){
-    for(int y = 0; y < sizeof(bricks[x]); y++){
-      bricks[x][y]->render();
-    }
+  for(int i = 0; i < sizeof(bricks); i++){
+    bricks[i]->render();
   }
   // End here
   SDL_RenderPresent(renderer);
