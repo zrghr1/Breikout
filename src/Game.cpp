@@ -6,6 +6,10 @@
 #include "gameobjects/Paddle.hpp"
 
 GameObject* startScreen;
+GameObject* badEnding;
+GameObject* midEnding;
+GameObject* goodEnding;
+GameObject* winEnding;
 
 std::vector<Brick*> bricks;
 const int rows = 8;
@@ -60,6 +64,12 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   // Init startScreen
   startScreen = new GameObject("assets/2d/StartScreen.png", renderer, 200, 200, 200, 200);
 
+  // Init Ending Screens
+  badEnding = new GameObject("assets/2d/BadEnding.png", renderer, 200, 200, 200, 200);
+  midEnding = new GameObject("assets/2d/MidEnding.png", renderer, 200, 200, 200, 200);
+  goodEnding = new GameObject("assets/2d/GoodEnding.png", renderer, 200, 200, 200, 200);
+  winEnding = new GameObject("assets/2d/WinEnding.png", renderer, 200, 200, 200, 200);
+
   // Initialize Bricks
   for(int row = 0; row < rows; row++){
     for(int col = 0; col < cols; col++){
@@ -95,8 +105,8 @@ void Game::handleEvents(){
     if(event.key.key == SDLK_ESCAPE){
       if(state == 0){
         state = 1;
-      }else if (state == 2){
-        isRunning = false;
+      }else if(state == 2){
+        isRunning=false;
       }
       std::cout << state << std::endl;
     }
@@ -129,6 +139,16 @@ void Game::update(){
     paddle->update();
     paddle->move();
     //std::cout << cnt << std::endl;
+  } else if (state == 2){
+    if(score < 5){
+      badEnding->update();
+    }else if(score < 15){
+      midEnding->update();
+    }else if(score < 39){
+      goodEnding->update();
+    }else{
+      winEnding->update();
+    }
   }
 }
 
@@ -144,22 +164,39 @@ void Game::render(){
     }
     ball->render();
     paddle->render();
+  }else if (state == 2){
+    if(score < 10){
+      badEnding->render();
+    }else if(score < 25){
+      midEnding->render();
+    }else if(score < 35){
+      goodEnding->render();
+    }else{
+      winEnding->render();
+    }
   }
   // End here
   SDL_RenderPresent(renderer);
 }
 
 void Game::clear(){
-  SDL_DestroyWindow(window);
-  SDL_DestroyRenderer(renderer);
-  SDL_Quit();
 
-  for(int i = 0; i < rows*cols; i++){
+  /*for(int i = 0; i < rows*cols; i++){
     free(bricks[i]);
-  }
+  }*/
+
   free(ball);
   free(paddle);
   free(startScreen);
+
+  free(badEnding);
+  free(midEnding);
+  free(goodEnding);
+  free(winEnding);
+
+  SDL_DestroyWindow(window);
+  SDL_DestroyRenderer(renderer);
+  SDL_Quit();
 
   std::cout << "Game Cleared" << std::endl;
 }
