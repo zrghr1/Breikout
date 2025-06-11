@@ -6,6 +6,9 @@
 #include "gameobjects/Paddle.hpp"
 
 std::vector<Brick*> bricks;
+const int rows = 8;
+const int cols = 10;
+
 Ball* ball;
 Paddle* paddle;
 
@@ -52,8 +55,8 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   }*/
 
   // Initialize Bricks
-  for(int row = 0; row < 4; row++){
-    for(int col = 0; col < 10; col++){
+  for(int row = 0; row < rows; row++){
+    for(int col = 0; col < cols; col++){
       Brick* brick = new Brick("assets/2d/Brick.png", renderer, col*80, row*40, 40, 20);
       bricks.push_back(brick);
     }
@@ -89,7 +92,7 @@ void Game::update(){
  
   ball->update();
   ball->move(paddle);
-  for(int i = 0; i < 40; i++){
+  for(int i = 0; i < rows*cols; i++){
     bricks[i]->update();
 
     int brickHit = ball->collideBrick(bricks[i]);
@@ -108,7 +111,7 @@ void Game::render(){
   SDL_RenderClear(renderer);
   // Add renderables here
 
-  for(int i = 0; i < 40; i++){
+  for(int i = 0; i < rows*cols; i++){
     bricks[i]->render();
   }
   ball->render();
@@ -122,7 +125,7 @@ void Game::clear(){
   SDL_DestroyRenderer(renderer);
   SDL_Quit();
 
-  for(int i = 0; i < 40; i++){
+  for(int i = 0; i < rows*cols; i++){
     free(bricks[i]);
   }
   free(ball);
