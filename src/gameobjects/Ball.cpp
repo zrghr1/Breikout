@@ -1,8 +1,8 @@
 #include "Ball.hpp"
 #include "../utils/Collision.hpp"
 
-Ball::Ball(const char* texture, SDL_Renderer* ren, int x, int y)
-: GameObject(texture,ren,x,y){
+Ball::Ball(const char* texture, SDL_Renderer* ren, int x, int y, int width, int height)
+: GameObject(texture,ren,x,y, width, height){
   
   collider.w = 20;
   collider.h = 20;
