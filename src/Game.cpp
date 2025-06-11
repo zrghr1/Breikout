@@ -49,7 +49,7 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   ball = new Ball("assets/2d/Ball.png", renderer, 400, 400, 10, 10);
 
   // Initialize Paddle
-  paddle = new Paddle("assets/2d/Paddle.png", renderer, 400, 700, 60, 10);
+  paddle = new Paddle("assets/2d/Paddle.png", renderer, 400, 700, 10, 60);
 
 }
 
@@ -63,6 +63,8 @@ void Game::handleEvents(){
     default:
       break;
   }
+
+  paddle->handleInput(event);
 }
 
 void Game::update(){
