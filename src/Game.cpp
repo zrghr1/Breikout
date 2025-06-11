@@ -38,6 +38,7 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
     isRunning = false;
   }
 
+  // Initialize bricks
   int count = 0;
   for(int i = 0; i < sizeof(bricks); i++){
     if(i%40 == 39){

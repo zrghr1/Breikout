@@ -7,8 +7,8 @@ Ball::Ball(const char* texture, SDL_Renderer* ren, int x, int y)
   collider.w = 20;
   collider.h = 20;
   
-  xvel = 0;
-  yvel = 0;
+  xvel = 1;
+  yvel = 1;
 }
 
 void Ball::move( SDL_FRect& wall){
