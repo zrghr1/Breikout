@@ -58,7 +58,7 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   }*/
 
   // Init startScreen
-  startScreen = new GameObject("assets/2d/StartScreen.png", ren, 200, 200, 400, 400);
+  startScreen = new GameObject("assets/2d/StartScreen.png", renderer, 200, 200, 400, 400);
 
   // Initialize Bricks
   for(int row = 0; row < rows; row++){
