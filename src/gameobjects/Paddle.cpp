@@ -10,14 +10,17 @@ void Paddle::handleInput(SDL_Event e){
   if(e.type == SDL_EVENT_KEY_DOWN){
     if(e.key.key == SDLK_LEFT){
       xvel = -1;
+      std::cout << xvel << std::endl;
     }
     if(e.key.key == SDLK_RIGHT){
-      xvel = -1;
+      xvel = 1;
+      std::cout << xvel << std::endl;
     }
   }
-  if(e.type == SDL_EVENT_KEY_DOWN){
+  if(e.type == SDL_EVENT_KEY_UP){
     if(e.key.key == SDLK_LEFT || e.key.key == SDLK_RIGHT){
       xvel = 0;
+      std::cout << xvel << std::endl;
     }
   }
 }
