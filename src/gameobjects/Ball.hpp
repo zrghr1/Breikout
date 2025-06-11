@@ -12,4 +12,4 @@ public:
 private:
   int xvel, yvel;
   SDL_FRect collider;
-}
+};
