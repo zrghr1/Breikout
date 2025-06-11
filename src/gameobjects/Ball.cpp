@@ -8,7 +8,7 @@ Ball::Ball(const char* texture, SDL_Renderer* ren, int x, int y, int w, int h)
   collider.h = height*2;
   
   xvel = 1;
-  yvel = 1;
+  yvel = 3;
 }
 
 void Ball::move(/* SDL_FRect& wall */){
@@ -16,7 +16,8 @@ void Ball::move(/* SDL_FRect& wall */){
   collider.x = xpos;
 
   if ((xpos < 0 ) || (xpos + collider.w > 800) /* || checkCollision(collider, wall) */){
-    xpos -= xvel;
+    xvel = -xvel;
+    xpos += xvel;
     collider.x = xpos;
   }
 
@@ -24,7 +25,8 @@ void Ball::move(/* SDL_FRect& wall */){
   collider.y = ypos;
 
   if ((ypos < 0 ) || (ypos + collider.h > 800) /* || checkCollision(collider, wall) */){
-    ypos -= yvel;
+    yvel = -yvel;
+    ypos += yvel;
     collider.y = ypos;
   }
 }
