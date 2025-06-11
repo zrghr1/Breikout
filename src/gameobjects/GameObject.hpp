@@ -10,7 +10,7 @@ public:
   void update();
   void render();
 
-private:
+protected:
   int xpos;
   int ypos;
 
