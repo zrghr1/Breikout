@@ -30,7 +30,7 @@ void Ball::move(Paddle* paddle){
     collider.y = ypos;
   }
 
-  if(ypos > paddle->ypos && ypos < paddle->ypos + 20){
+  if(ypos + 20 > paddle->ypos && ypos < paddle->ypos + 20){
     if(xpos > paddle->xpos && xpos< paddle->xpos + 120){
       yvel= -yvel;
       ypos += yvel;
