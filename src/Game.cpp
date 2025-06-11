@@ -61,9 +61,8 @@ void Game::handleEvents(){
 
 void Game::update(){
   cnt++;
-  for(int i = 0; i < sizeof(bricks); i++){
-    bricks[i]->update();
-  }
+  
+  brick->update();
   //std::cout << cnt << std::endl;
 }
 
@@ -71,9 +70,7 @@ void Game::render(){
   SDL_RenderClear(renderer);
   // Add renderables here
 
-  for(int i = 0; i < sizeof(bricks); i++){
-    bricks[i]->render();
-  }
+  brick->render();
   // End here
   SDL_RenderPresent(renderer);
 }
