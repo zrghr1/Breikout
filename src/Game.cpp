@@ -47,11 +47,11 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
       count++;
     }
     std::cout << count << std::endl;
-    bricks[i] = new GameObject("assets/2d/Brick.png", renderer, (i%40) * 80, count*40);
+    bricks[i] = new GameObject("assets/2d/Brick.png", renderer, (i%40) * 80, count*40, 80, 40);
   }
 
   // Initialize ball
-  ball = new Ball("assets/2d/Ball.png", renderer, 400, 400);
+  ball = new Ball("assets/2d/Ball.png", renderer, 400, 400, 20, 20);
 
 }
 
