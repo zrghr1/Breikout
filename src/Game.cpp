@@ -63,7 +63,7 @@ void Game::update(){
 void Game::render(){
   SDL_RenderClear(renderer);
   // Add renderables here
-  brick->render()
+  brick->render();
   // End here
   SDL_RenderPresent(renderer);
 }
