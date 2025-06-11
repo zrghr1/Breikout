@@ -4,6 +4,7 @@ Paddle::Paddle(const char* texture, SDL_Renderer* ren, int x, int y, int w, int 
 : GameObject(texture, ren, x, y, w, h){
   collider.w = w*2;
   collider.h = h*2;
+  xvel = 0;
 }
 
 void Paddle::handleInput(SDL_Event e){
