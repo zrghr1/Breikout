@@ -1,17 +1,18 @@
 #include "GameObject.hpp"
 #include "../utils/TextureManager.hpp"
 
-GameObject::GameObject(const char* texture, SDL_Renderer* ren, int x, int y){
+GameObject::GameObject(const char* texture, SDL_Renderer* ren, int x, int y, int width, int height){
   renderer = ren;
   objTexture = TextureManager::LoadTexture(texture, ren);
 
   xpos = x;
   ypos = y;
+
+  srcRect.h = width;
+  srcRect.w = height;
 }
 
 void GameObject::update(){
-  srcRect.h = 20;
-  srcRect.w = 40;
   srcRect.x = 0;
   srcRect.y = 0;
 
