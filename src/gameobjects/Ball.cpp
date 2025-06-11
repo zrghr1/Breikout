@@ -7,7 +7,7 @@ Ball::Ball(const char* texture, SDL_Renderer* ren, int x, int y, int w, int h)
   collider.w = width*2;
   collider.h = height*2;
   
-  xvel = 1;
+  xvel = 2;
   yvel = 3;
 }
 
