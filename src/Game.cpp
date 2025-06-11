@@ -2,7 +2,7 @@
 #include "utils/TextureManager.hpp"
 #include "gameobjects/GameObject.hpp"
 
-GameObject* brick;
+GameObject* bricks[10][4];
 
 Game::Game() {
 
@@ -38,8 +38,13 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
     isRunning = false;
   }
 
+  for(int x = 0; x < sizeof(bricks); x++){
+    for(int y = 0; y < sizeof(bricks[x]); y++){
+      bricks[x][y] = new GameObject("assets/2d/Brick.png", renderer, x * 80, y * 40);
+    }
+  }
+
   // Test brick
-  brick = new GameObject("assets/2d/Brick.png", renderer, 0, 0);
 }
 
 void Game::handleEvents(){
@@ -56,14 +61,23 @@ void Game::handleEvents(){
 
 void Game::update(){
   cnt++;
-  brick->update();
+  for(int x = 0; x < sizeof(bricks); x++){
+    for(int y = 0; y < sizeof(bricks[x]); y++){
+      bricks[x][y]->update();
+    }
+  }
   //std::cout << cnt << std::endl;
 }
 
 void Game::render(){
   SDL_RenderClear(renderer);
   // Add renderables here
-  brick->render();
+
+  for(int x = 0; x < sizeof(bricks); x++){
+    for(int y = 0; y < sizeof(bricks[x]); y++){
+      bricks[x][y]->render();
+    }
+  }
   // End here
   SDL_RenderPresent(renderer);
 }
