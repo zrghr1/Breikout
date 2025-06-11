@@ -3,7 +3,6 @@
 #include "GameObject.hpp"
 #include "Paddle.hpp"
 #include "Brick.hpp"
-#include "../utils/GameData.hpp"
 
 class Ball : public GameObject {
 public:
