@@ -13,6 +13,7 @@ Ball* ball;
 Paddle* paddle;
 
 int score;
+int state;
 
 Game::Game() {
 
@@ -70,6 +71,7 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
 
   // Initialize Score
   score = 0;
+  state = 0;
 
 }
 
@@ -84,27 +86,40 @@ void Game::handleEvents(){
       break;
   }
 
+  if(event.type == SDL_EVENT_KEY_DOWN){
+    if(event.key.key == SDLK_ESCAPE){
+      if(state == 0){
+        state = 1;
+      }else if (state == 2){
+        isRunning = false;
+      }
+      std::cout << state << std::endl;
+    }
+  }
+
   paddle->handleInput(event);
 }
 
 void Game::update(){
-  cnt++;
- 
-  ball->update();
-  ball->move(paddle);
-  for(int i = 0; i < rows*cols; i++){
-    bricks[i]->update();
+  if(state == 1){
+    cnt++;
+   
+    ball->update();
+    ball->move(paddle);
+    for(int i = 0; i < rows*cols; i++){
+      bricks[i]->update();
 
-    int brickHit = ball->collideBrick(bricks[i]);
-    if(brickHit == 1){
-      score++;
-      std::cout << score << std::endl;
+      int brickHit = ball->collideBrick(bricks[i]);
+      if(brickHit == 1){
+        score++;
+        std::cout << score << std::endl;
+      }
     }
+    
+    paddle->update();
+    paddle->move();
+    //std::cout << cnt << std::endl;
   }
-  
-  paddle->update();
-  paddle->move();
-  //std::cout << cnt << std::endl;
 }
 
 void Game::render(){

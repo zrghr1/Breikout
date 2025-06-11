@@ -22,6 +22,7 @@ public:
   bool running() { return isRunning; }
 
 private:
+  //int state;
   int cnt = 0;
   bool isRunning;
   SDL_Window* window;
