@@ -9,6 +9,8 @@ Brick* brick;
 Ball* ball;
 Paddle* paddle;
 
+int score;
+
 Game::Game() {
 
 }
@@ -58,6 +60,9 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   // Initialize Paddle
   paddle = new Paddle("assets/2d/Paddle.png", renderer, 340, 700, 60, 10);
 
+  // Initialize Score
+  score = 0;
+
 }
 
 void Game::handleEvents(){
@@ -80,7 +85,11 @@ void Game::update(){
   brick->update();
   ball->update();
   ball->move(paddle);
-  ball->collideBrick(brick);
+  int brickHit = ball->collideBrick(brick);
+  if(brickHit == 1){
+    score++;
+    std::cout << score << std::endl;
+  }
   paddle->update();
   paddle->move();
   //std::cout << cnt << std::endl;

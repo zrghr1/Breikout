@@ -11,7 +11,7 @@ public:
   ~Ball();
 
   void move(Paddle* paddle);
-  void collideBrick(Brick* brick);
+  int collideBrick(Brick* brick);
   
 private:
   int xvel, yvel;

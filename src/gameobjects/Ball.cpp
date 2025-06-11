@@ -54,7 +54,7 @@ void Ball::move(Paddle* paddle){
   collider.y = ypos;
 }
 
-void Ball::collideBrick(Brick* brick){
+int Ball::collideBrick(Brick* brick){
 
   if(xpos + 20 > brick->xpos && xpos < brick->xpos + 80){
     if(ypos + 20 > brick->ypos && ypos < brick->ypos + 40){
@@ -66,6 +66,8 @@ void Ball::collideBrick(Brick* brick){
       }
       std::cout << "brick hit" << std::endl;
       free(brick);
+      return 1;
     }
   }
+  return 0;
 }
