@@ -12,3 +12,11 @@ void Paddle::move(int x){
     collider.x = xpos;
   }
 }
+
+void Paddle::handleInput(SDL_Event event){
+  if(e.type == SDL_EVENT_KEY_DOWN){
+    if(e.key.key == SDLK_LEFT){
+      std::cout << "left" << std::endl;
+    }
+  }
+}

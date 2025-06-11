@@ -7,6 +7,7 @@ public:
   Paddle(const char* texture, SDL_Renderer* ren, int x, int y, int width, int height);
   ~Paddle()
 
+  handleInput(SDL_Event event);
   update()
   render()
   move();

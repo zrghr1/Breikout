@@ -14,8 +14,6 @@ Game::~Game(){
 
 }
 
-bool KEYS[322];
-
 void Game::init(const char *title, int width, int height, bool fullscreen){
 
   int flags = 0;
@@ -42,11 +40,6 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
     isRunning = false;
   }
 
-  // Initialize KEYS
-  for(int i = 0; i < 322; i++){
-    KEYS[i] = false;
-  }
-
   // Initialize Brick
   brick = new GameObject("assets/2d/Brick.png", renderer, 0, 0, 20, 40);
 
@@ -61,21 +54,8 @@ void Game::handleEvents(){
     case SDL_EVENT_QUIT: 
       isRunning = false;
       break;
-    case SDL_KEYDOWN:
-      KEYS[event.key.keysym.sym] = true;
-      break;
-    case SDL_KEYUP:
-      KEYS[event.key.keysym.sym] = false;
-      break;
     default:
       break;
-  }
-  handleInput()
-}
-
-void Game::handleInput(){
-  if(KEYS[SDLK_LEFT]){
-    std::cout << "AAA" << std::endl;
   }
 }
 
