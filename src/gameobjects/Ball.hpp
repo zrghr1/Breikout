@@ -2,6 +2,7 @@
 
 #include "GameObject.hpp"
 #include "Paddle.hpp"
+#include "Brick.hpp"
 
 class Ball : public GameObject {
 public:
@@ -9,6 +10,7 @@ public:
   ~Ball();
 
   void move(Paddle* paddle);
+  void collideBrick(Brick* brick);
   
 private:
   int xvel, yvel;

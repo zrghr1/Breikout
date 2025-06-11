@@ -2,9 +2,10 @@
 #include "utils/TextureManager.hpp"
 #include "gameobjects/GameObject.hpp"
 #include "gameobjects/Ball.hpp"
+#include "gameobjects/Brick.hpp"
 #include "gameobjects/Paddle.hpp"
 
-GameObject* brick;
+Brick* brick;
 Ball* ball;
 Paddle* paddle;
 
@@ -43,13 +44,13 @@ void Game::init(const char *title, int width, int height, bool fullscreen){
   }
   
   // Initialize SDL3-ttf
-  if(TTF_Init() != 0){
+  /*if(TTF_Init() != 0){
     std::cout << "SDL3_ttf failed initialization" << std::endl;
     isRunning = false;
-  }
+  }*/
 
   // Initialize Brick
-  brick = new GameObject("assets/2d/Brick.png", renderer, 0, 0, 40, 20);
+  brick = new Brick("assets/2d/Brick.png", renderer, 0, 0, 40, 20);
 
   // Initialize ball
   ball = new Ball("assets/2d/Ball.png", renderer, 400, 400, 10, 10);
@@ -79,6 +80,7 @@ void Game::update(){
   brick->update();
   ball->update();
   ball->move(paddle);
+  ball->collideBrick(brick);
   paddle->update();
   paddle->move();
   //std::cout << cnt << std::endl;

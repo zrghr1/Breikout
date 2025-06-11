@@ -1,5 +1,4 @@
 #include "Ball.hpp"
-#include "../utils/Collision.hpp"
 
 Ball::Ball(const char* texture, SDL_Renderer* ren, int x, int y, int w, int h)
 : GameObject(texture,ren,x,y, w, h){
@@ -12,17 +11,12 @@ Ball::Ball(const char* texture, SDL_Renderer* ren, int x, int y, int w, int h)
 }
 
 void Ball::move(Paddle* paddle){
-  xpos += xvel;
-  collider.x = xpos;
 
   if ((xpos < 0 ) || (xpos + collider.w > 800) /* || checkCollision(collider, wall) */){
     xvel = -xvel;
     xpos += xvel;
     collider.x = xpos;
   }
-
-  ypos += yvel;
-  collider.y = ypos;
 
   if ((ypos < 0 ) || (ypos + collider.h > 800) /* || checkCollision(collider, wall) */){
     yvel = -yvel;
@@ -50,6 +44,21 @@ void Ball::move(Paddle* paddle){
       collider.y = ypos;
       xpos += xvel;
       collider.x = xpos;
+    }
+  }
+
+  xpos += xvel;
+  collider.x = xpos;
+
+  ypos += yvel;
+  collider.y = ypos;
+}
+
+void Ball::collideBrick(Brick* brick){
+
+  if(xpos > brick->xpos && xpos < brick->xpos + 80){
+    if(ypos > brick->ypos && ypos < brick->ypos + 40){
+      std::cout << "in brick" << std::endl;
     }
   }
 }
