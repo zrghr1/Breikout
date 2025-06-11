@@ -27,7 +27,7 @@ bool checkCollision( SDL_FRect a, SDL_FRect b ){
   if(rightA <= leftB){
     return false;
   }
-  if(leftA >= leftB){
+  if(leftA >= rightB){
     return false;
   }
 
