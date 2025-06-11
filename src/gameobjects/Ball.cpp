@@ -58,11 +58,16 @@ int Ball::collideBrick(Brick* brick){
 
   if(xpos + 20 > brick->xpos && xpos < brick->xpos + 80){
     if(ypos + 20 > brick->ypos && ypos < brick->ypos + 40){
-      if(xpos + 20 > brick->xpos + 80 || xpos < brick->xpos){
+      if(xpos + 20 > brick->xpos + 80 && xvel < 0){
         xvel = -xvel;
       }
-      if(ypos + 20 > brick->ypos + 40 || ypos < brick->ypos){
+      if(xpos < brick->xpos && xvel > 0){
+        xvel = -xvel;
+      }
+      if(ypos + 20 > brick->ypos + 40 && yvel < 0){
         yvel = -yvel;
+      }
+      if(ypos < brick->ypos && yvel > 0){
       }
       std::cout << "brick hit" << std::endl;
       free(brick);
