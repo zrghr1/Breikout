@@ -71,6 +71,7 @@ void Game::update(){
   brick->update();
   ball->update();
   ball->move();
+  paddle->update();
   //std::cout << cnt << std::endl;
 }
 
@@ -80,6 +81,7 @@ void Game::render(){
 
   brick->render();
   ball->render();
+  paddle->render();
   // End here
   SDL_RenderPresent(renderer);
 }
