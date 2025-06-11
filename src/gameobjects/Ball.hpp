@@ -9,7 +9,7 @@ public:
   Ball(const char* texture, SDL_Renderer* ren, int x, int y, int width, int height);
   ~Ball();
 
-  void move(Paddle* paddle);
+  int move(Paddle* paddle);
   int collideBrick(Brick* brick);
   
 private:

@@ -112,7 +112,10 @@ void Game::update(){
     cnt++;
    
     ball->update();
-    ball->move(paddle);
+    int ballMove = ball->move(paddle);
+    if(ballMove == 2){
+      state = 2;
+    }
     for(int i = 0; i < rows*cols; i++){
       bricks[i]->update();
 

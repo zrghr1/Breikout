@@ -10,7 +10,7 @@ Ball::Ball(const char* texture, SDL_Renderer* ren, int x, int y, int w, int h)
   yvel = 4;
 }
 
-void Ball::move(Paddle* paddle){
+int Ball::move(Paddle* paddle){
 
   if ((xpos < 0 ) || (xpos + collider.w > 800) /* || checkCollision(collider, wall) */){
     xvel = -xvel;
@@ -18,10 +18,13 @@ void Ball::move(Paddle* paddle){
     collider.x = xpos;
   }
 
-  if ((ypos < 0 ) || (ypos + collider.h > 800) /* || checkCollision(collider, wall) */){
+  if (ypos < 0  /* || checkCollision(collider, wall) */){
     yvel = -yvel;
     ypos += yvel;
     collider.y = ypos;
+  }
+  if(ypos + collider.h > 800){
+    return 2;
   }
 
   if(ypos + 20 > paddle->ypos && ypos < paddle->ypos + 20){
@@ -52,6 +55,8 @@ void Ball::move(Paddle* paddle){
 
   ypos += yvel;
   collider.y = ypos;
+
+  return 0;
 }
 
 int Ball::collideBrick(Brick* brick){
