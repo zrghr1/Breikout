@@ -10,7 +10,7 @@ public:
   void handleInput(SDL_Event event);
   void update();
   void render();
-  void move();
+  void move(int x);
 
 private:
   int xvel;

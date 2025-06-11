@@ -6,17 +6,17 @@ Paddle::Paddle(const char* texture, SDL_Renderer* ren, int x, int y, int w, int 
   collider.h = height*2;
 }
 
-void Paddle::move(int x){
-  if(xpos >= 0 || xpos <= 800){
-    xpos += x;
-    collider.x = xpos;
-  }
-}
-
 void Paddle::handleInput(SDL_Event e){
   if(e.type == SDL_EVENT_KEY_DOWN){
     if(e.key.key == SDLK_LEFT){
       std::cout << "left" << std::endl;
     }
+  }
+}
+
+void Paddle::move(int x){
+  if(xpos >= 0 || xpos <= 800){
+    xpos += x;
+    collider.x = xpos;
   }
 }
